@@ -1,14 +1,321 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortFiles</title>
+    <title>PortFiles - Create & Discover Portfolios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
+        .header-nav button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .header-nav button:hover {
+            background-color: #0052a3;
+        }
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .main-content {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-section {
+            margin-bottom: 30px;
+        }
+        .search-section input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .search-section button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .hero-section {
+            background-color: #f0f7ff;
+            padding: 40px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        .hero-section h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .hero-section p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .hero-section .cta-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .cta-buttons button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .cta-buttons .primary {
+            background-color: #0066cc;
+            color: white;
+        }
+        .cta-buttons .secondary {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .portfolios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .portfolio-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+        }
+        .portfolio-card h3 {
+            margin-bottom: 10px;
+            color: #0066cc;
+        }
+        .portfolio-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .portfolio-card a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
-<img src="https://cdn.discordapp.com/attachments/1060703529729269871/1523095354608848896/image.png?ex=6a4adc96&is=6a498b16&hm=f05cb6ac2b8b1b3a288dc6fd65f39f8879fd051bdf673081da08fa1bc7dda028&" alt="Portfiles">
-<h2> Inicio   Mis Páginas    Explorar    Inicio de Sesión    Registrarse</h2>
 <body>
-    <h1>Bienvenido a la Página de inicio de Portfiles</h1>
-    <p>Diseña tu propio Portafolio de forma intuitiva</p>
+    <header>
+        <div class="logo">PortFiles</div>
+        <div class="header-nav">
+            <button onclick="window.location.href='pagecreationpage.html'">+ Create Page</button>
+            <button onclick="window.location.href='signinandlogin.html'">Sign In / Log In</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="search-section">
+                <input id="portfolio-search" type="search" placeholder="Search portfolios or users..." aria-label="Search portfolios or users">
+                <button id="search-button" type="button">Search</button>
+            </div>
+
+            <div class="hero-section">
+                <h1>Welcome to PortFiles</h1>
+                <p>Create your own portfolio page and discover amazing work from other creators worldwide.</p>
+                <div class="cta-buttons">
+                    <button class="primary" id="upload-portfolio-button" type="button">Upload Portfolio (HTML file)</button>
+            
+                    
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 20px;">Featured Portfolios</h2>
+            <div class="portfolios-grid">
+                <div class="portfolio-card">
+                    <h3>John Smith</h3>
+                    <p>Web Designer & Developer</p>
+                    <p>Specializing in modern UI/UX design and responsive web development.</p>
+                    <a href="#john-smith" data-portfolio="John Smith|Web Designer & Developer|Specializing in modern UI/UX design and responsive web development.">View Portfolio →</a>
+                </div>
+                <div class="portfolio-card">
+                    <h3>Sarah Creative</h3>
+                    <p>Graphic Designer</p>
+                    <p>Brand identity and visual design solutions for innovative startups.</p>
+                    <a href="#sarah-creative" data-portfolio="Sarah Creative|Graphic Designer|Brand identity and visual design solutions for innovative startups.">View Portfolio →</a>
+                </div>
+                <div class="portfolio-card">
+                    <h3>Alex Dev</h3>
+                    <p>Full Stack Developer</p>
+                    <p>Building scalable applications with cutting-edge technologies.</p>
+                    <a href="#alex-dev" data-portfolio="Alex Dev|Full Stack Developer|Building scalable applications with cutting-edge technologies.">View Portfolio →</a>
+                </div>
+                <div class="portfolio-card">
+                    <h3>Emma Writer</h3>
+                    <p>Content Writer</p>
+                    <p>Crafting engaging narratives and compelling storytelling.</p>
+                    <a href="#emma-writer" data-portfolio="Emma Writer|Content Writer|Crafting engaging narratives and compelling storytelling.">View Portfolio →</a>
+                </div>
+            </div>
+            <p id="no-results" style="display: none; margin-top: 20px; color: #666;">No portfolios match your search.</p>
+        </main>
+    </div>
+
+    <dialog id="upload-dialog">
+        <form method="dialog">
+            <h2>Upload your portfolio</h2>
+            <div id="upload-drop-zone" tabindex="0" role="button" aria-label="Choose or drop an HTML portfolio file">
+                <p>Drag and drop your HTML file here</p>
+                <p>or</p>
+                <button type="button" id="choose-file-button">Choose an HTML file</button>
+                <input id="portfolio-file" type="file" accept=".html,text/html" hidden>
+            </div>
+            <p id="selected-file" aria-live="polite"></p>
+            <button type="button" id="publish-portfolio-button">Publish</button>
+            <button type="submit">Cancel</button>
+        </form>
+    </dialog>
+
+    <footer>
+        <p>&copy; 2026 PortFiles. Create, Share, Discover.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('portfolio-search');
+        const searchButton = document.getElementById('search-button');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        const noResults = document.getElementById('no-results');
+        const uploadButton = document.getElementById('upload-portfolio-button');
+        const uploadDialog = document.getElementById('upload-dialog');
+        const dropZone = document.getElementById('upload-drop-zone');
+        const chooseFileButton = document.getElementById('choose-file-button');
+        const portfolioFile = document.getElementById('portfolio-file');
+        const selectedFile = document.getElementById('selected-file');
+        const publishButton = document.getElementById('publish-portfolio-button');
+        const featuredPortfolioLinks = document.querySelectorAll('.portfolio-card a[data-portfolio]');
+        let selectedPortfolioFile = null;
+
+        function openPlaceholderPortfolio(event) {
+            event.preventDefault();
+            const [name, role, description] = event.currentTarget.dataset.portfolio.split('|');
+            const page = `<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${name} — PortFiles</title><style>
+*{box-sizing:border-box}body{margin:0;font:16px system-ui,sans-serif;color:#172033;background:#f4f7fb}header{padding:22px 8%;background:#172033;color:#fff}main{max-width:980px;margin:48px auto;padding:0 24px}.hero{padding:48px;border-radius:20px;background:linear-gradient(135deg,#dbeafe,#fff);box-shadow:0 12px 35px #17203318}h1{font-size:clamp(2.3rem,6vw,4.5rem);margin:0 0 10px}h2{margin-top:42px}.role{font-size:1.25rem;color:#3b82f6}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.card{padding:24px;background:#fff;border:1px solid #e5e7eb;border-radius:14px}.card h3{margin-top:0}a{color:#2563eb}.back{display:inline-block;margin-top:30px;padding:11px 17px;border-radius:8px;background:#172033;color:#fff;text-decoration:none}</style></head>
+<body><header><strong>PortFiles</strong> / Featured Portfolio</header><main><section class="hero"><p class="role">${role}</p><h1>${name}</h1><p>${description}</p></section><h2>About this creator</h2><p>This placeholder portfolio is ready for ${name}'s work, process, and story. Explore the sample sections below while the full collection is being prepared.</p><div class="grid"><article class="card"><h3>Selected Work</h3><p>A curated selection of projects demonstrating thoughtful ideas and polished results.</p></article><article class="card"><h3>Capabilities</h3><p>Strategy, creative problem-solving, collaboration, and detail-focused execution.</p></article><article class="card"><h3>Get in touch</h3><p>Interested in working together? Check back soon for contact details and project updates.</p></article></div><a class="back" href="javascript:window.close()">Close portfolio</a></main></body></html>`;
+            const portfolioWindow = window.open();
+            if (portfolioWindow) { portfolioWindow.document.write(page); portfolioWindow.document.close(); }
+        }
+
+        featuredPortfolioLinks.forEach(link => link.addEventListener('click', openPlaceholderPortfolio));
+
+        function filterPortfolios() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            portfolioCards.forEach(card => {
+                const matches = card.textContent.toLowerCase().includes(searchTerm);
+                card.style.display = matches ? '' : 'none';
+                if (matches) visibleCount++;
+            });
+
+            noResults.style.display = visibleCount ? 'none' : 'block';
+        }
+
+        searchInput.addEventListener('input', filterPortfolios);
+        searchButton.addEventListener('click', filterPortfolios);
+        searchInput.addEventListener('keydown', event => {
+            if (event.key === 'Enter') filterPortfolios();
+        });
+
+        uploadButton.addEventListener('click', () => uploadDialog.showModal());
+        chooseFileButton.addEventListener('click', () => portfolioFile.click());
+        dropZone.addEventListener('click', event => {
+            if (event.target !== chooseFileButton) portfolioFile.click();
+        });
+        portfolioFile.addEventListener('change', () => showSelectedFile(portfolioFile.files[0]));
+
+        ['dragenter', 'dragover'].forEach(eventName => dropZone.addEventListener(eventName, event => {
+            event.preventDefault();
+            dropZone.style.borderColor = '#333';
+        }));
+        ['dragleave', 'drop'].forEach(eventName => dropZone.addEventListener(eventName, event => {
+            event.preventDefault();
+            dropZone.style.borderColor = '';
+        }));
+        dropZone.addEventListener('drop', event => showSelectedFile(event.dataTransfer.files[0]));
+
+        function showSelectedFile(file) {
+            if (!file) return;
+            if (!file.name.toLowerCase().endsWith('.html')) {
+                selectedPortfolioFile = null;
+                selectedFile.textContent = 'Please choose an HTML file.';
+                return;
+            }
+            selectedPortfolioFile = file;
+            selectedFile.textContent = `Selected: ${file.name}`;
+        }
+
+        publishButton.addEventListener('click', () => {
+            if (!selectedPortfolioFile) {
+                selectedFile.textContent = 'Please choose an HTML file to publish.';
+                return;
+            }
+
+            const portfolioUrl = URL.createObjectURL(selectedPortfolioFile);
+            const card = document.createElement('div');
+            card.className = 'portfolio-card';
+            card.innerHTML = `<h3>${selectedPortfolioFile.name}</h3><p>Uploaded Portfolio</p>`;
+            const link = document.createElement('a');
+            link.href = portfolioUrl;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = 'View Portfolio →';
+            card.appendChild(link);
+            document.querySelector('.portfolios-grid').appendChild(card);
+            uploadDialog.close();
+            selectedPortfolioFile = null;
+            selectedFile.textContent = '';
+            portfolioFile.value = '';
+        });
+    </script>
 </body>
 </html>

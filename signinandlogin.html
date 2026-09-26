@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & Login - Portfiles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .home-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            overflow: hidden;
+        }
+        
+        .form-section {
+            flex: 1;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-section.signin {
+            background: #f8f9fa;
+        }
+        
+        .form-section h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .form-group input::placeholder {
+            color: #999;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-signin {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-signin:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-login {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .btn-login:hover {
+            background: #1a252f;
+            transform: translateY(-2px);
+        }
+        
+        .toggle-text {
+            text-align: center;
+            color: #777;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .toggle-text a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .toggle-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .info-section {
+            flex: 1;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 60px 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .info-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .info-section {
+                padding: 40px;
+            }
+            
+            .form-section {
+                padding: 40px;
+            }
+            
+            .form-section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-btn">← Back Home</a>
+    
+    <div class="container">
+        <!-- Sign In Form -->
+        <div class="form-section signin" id="signinForm">
+            <h2>Create Account</h2>
+            <form onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-signin">Create Account</button>
+            </form>
+            <div class="toggle-text">
+                Already have an account? <a onclick="toggleForms()">Login</a>
+            </div>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="form-section hidden" id="loginForm">
+            <h2>Welcome Back</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me" style="display: inline; margin-left: 5px;">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-login">Login</button>
+            </form>
+            <div class="toggle-text">
+                Don't have an account? <a onclick="toggleForms()">Sign Up</a>
+            </div>
+        </div>
+        
+        <!-- Info Section -->
+        <div class="info-section">
+            <h3>Welcome to Portfiles</h3>
+            <p>Design stunning digital portfolios that showcase your best work and talents to the world.</p>
+            <p>Whether you're a creative professional, developer, designer, or artist, Portfiles makes it easy to create a beautiful, professional portfolio.</p>
+            <p style="margin-top: 30px; font-size: 14px; opacity: 0.8;">Join thousands of professionals already creating amazing portfolios.</p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleForms() {
+            const signinForm = document.getElementById('signinForm');
+            const loginForm = document.getElementById('loginForm');
+            
+            signinForm.classList.toggle('hidden');
+            loginForm.classList.toggle('hidden');
+        }
+        
+        function handleSignIn(event) {
+            event.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+            
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            alert(`Welcome, ${name}! Your account has been created successfully.`);
+            // Here you would normally send data to a server
+        }
+        
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            alert(`Login successful! Welcome back, ${email}!`);
+            // Here you would normally authenticate with a server
+        }
+    </script>
+</body>
+</html>
